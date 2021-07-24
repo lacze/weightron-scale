@@ -2,6 +2,7 @@ import { EventEmitter } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { CalculateService } from './calculate.service';
 import { Result } from './result';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,12 @@ export class ScaleService {
 
   private weighChangeEmitter: EventEmitter<number> = new EventEmitter();
 
-  constructor(private calculateService: CalculateService) { }
+  constructor(private calculateService: CalculateService, private http: HttpClient) {
+    this.getInitialHistory().subscribe(values => {
+      console.log(`Got values from http request:`, values);
+      this.currentResults = values}
+      );
+   }
 
   public addToListOfSums(result: Result): void {
     console.log(`Scale service added ${result} to list of sums`, this.currentResults);
@@ -58,6 +64,10 @@ export class ScaleService {
     this.currentSums = [];
     this.weighChangeEmitter.emit(0);
     this.lastWeigh = 0;
+  }
+
+  private getInitialHistory() {
+    return this.http.get<{timestamp: string, weigh: number}[]>('/assets/history.json');
   }
 
 }
