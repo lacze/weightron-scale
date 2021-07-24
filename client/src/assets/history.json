@@ -1,0 +1,10 @@
+[
+    {
+        "timestamp": "test1fromjson",
+        "weigh": 300
+    },
+    {
+        "timestamp": "test2fromjson",
+        "weigh": 700
+    }
+]
