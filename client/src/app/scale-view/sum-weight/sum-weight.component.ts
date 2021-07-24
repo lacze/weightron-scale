@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CalculateService } from 'src/app/calculate.service';
 import { ScaleService } from 'src/app/scale.service';
 
 @Component({
@@ -19,7 +18,7 @@ export class SumWeightComponent implements OnInit {
         this.updateSumWeightList(value);
         console.log(`SumWeightComponent/weighChangeSubscription: Value changed to ${value}`);
       });
-      this.sumWeight = this.scaleService.getCurrentSum();
+      this.sumWeight = this.scaleService.getLastSum();
       console.log(`SumWeightComponent/ngOnInit: initializing with value '${this.sumWeight}'`);
   }
 
@@ -29,8 +28,12 @@ export class SumWeightComponent implements OnInit {
 
   private updateSumWeightList(weigh: number) {
     this.sumWeightList.push(weigh);
-    this.sumWeight = this.scaleService.getCurrentSum();
+    this.updateCurrentSum(this.scaleService.getCurrentSum());
     console.log(`SumWeightComponent/updateSumWeightList: value changed and current value is '${this.sumWeight}'`);
+  }
+  
+  private updateCurrentSum(sum: number) {
+    this.sumWeight = sum;
   }
 
 }

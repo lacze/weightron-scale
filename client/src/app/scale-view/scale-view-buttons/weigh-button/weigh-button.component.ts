@@ -19,7 +19,7 @@ export class WeighButtonComponent implements OnInit {
     const currentTime = new Date().toLocaleString();
     const result: Result = {timestamp: currentTime, weigh: randomWeight};
     console.log("Calculate weigh called", result);
-    this.scaleService.addToListOfSums(result);
     this.scaleService.setLastWeigh(result.weigh);
+    this.scaleService.addToListOfSums(result);
   }
 }

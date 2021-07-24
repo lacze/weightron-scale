@@ -11,6 +11,7 @@ import { CurrentWeightComponent } from './scale-view/current-weight/current-weig
 import { SumWeightComponent } from './scale-view/sum-weight/sum-weight.component';
 import { ScaleViewButtonsComponent } from './scale-view/scale-view-buttons/scale-view-buttons.component';
 import { HttpClientModule } from '@angular/common/http';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxWebstorageModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
