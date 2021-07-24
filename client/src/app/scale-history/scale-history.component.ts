@@ -11,6 +11,7 @@ export class ScaleHistoryComponent implements OnInit {
     { timestamp: '2021-07-24 (placeholder)', weigh: 20 },
     { timestamp: '2021-07-24 (placeholder)', weigh: 30 }]
   
+    // TODO: create model for type
     public historyList: any[] = [];
 
   constructor() { }
