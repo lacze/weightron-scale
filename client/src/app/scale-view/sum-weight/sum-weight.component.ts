@@ -9,9 +9,9 @@ import { ScaleService } from 'src/app/scale.service';
 })
 export class SumWeightComponent implements OnInit {
   public sumWeight: number = 0;
-  private sumWeightList: number[] = [];
+  public sumWeightList: number[] = [];
   private weighChangeSubscription: any;
-  constructor(private calculateService: CalculateService, private scaleService: ScaleService) { }
+  constructor(private scaleService: ScaleService) { }
 
   ngOnInit(): void {
     this.weighChangeSubscription = this.scaleService.getWeighChangedEmitter()
@@ -28,9 +28,9 @@ export class SumWeightComponent implements OnInit {
   }
 
   private updateSumWeightList(weigh: number) {
+    this.sumWeightList.push(weigh);
     this.sumWeight = this.scaleService.getCurrentSum();
     console.log(`SumWeightComponent/updateSumWeightList: value changed and current value is '${this.sumWeight}'`);
   }
-
 
 }

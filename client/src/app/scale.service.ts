@@ -26,6 +26,11 @@ export class ScaleService {
     return this.currentResults;
   }
 
+  public getSumList(): number[] {
+    console.log(`ScaleService/getSumList`);
+    return this.currentSums;
+  }
+
   public setLastWeigh(weigh: number) {
     console.log(`ScaleService/setLastWeigh, emitting change: '${weigh}' to subscribers.`);
     this.lastWeigh = weigh;
