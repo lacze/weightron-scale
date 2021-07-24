@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ScaleService } from 'src/app/scale.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ScaleService } from 'src/app/scale.service';
   templateUrl: './current-weight.component.html',
   styleUrls: ['./current-weight.component.scss']
 })
-export class CurrentWeightComponent implements OnInit {
+export class CurrentWeightComponent implements OnInit, OnDestroy {
 
   public currentWeight: number = 0;
   private weighChangeSubscription: any;
@@ -16,6 +16,10 @@ export class CurrentWeightComponent implements OnInit {
   ngOnInit(): void {
     this.weighChangeSubscription = this.scaleService.getWeighChangedEmitter()
       .subscribe(value => this.updateCurrentWeight(value));
+  }
+
+  ngOnDestroy(): void {
+    this.weighChangeSubscription.unsubscribe();
   }
 
   private updateCurrentWeight(weigh: number) {
