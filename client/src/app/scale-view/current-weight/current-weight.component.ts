@@ -16,6 +16,7 @@ export class CurrentWeightComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.weighChangeSubscription = this.scaleService.getWeighChangedEmitter()
       .subscribe(value => this.updateCurrentWeight(value));
+      this.currentWeight = this.scaleService.getLastWeigh();
   }
 
   ngOnDestroy(): void {

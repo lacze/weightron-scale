@@ -15,7 +15,12 @@ export class SumWeightComponent implements OnInit {
 
   ngOnInit(): void {
     this.weighChangeSubscription = this.scaleService.getWeighChangedEmitter()
-      .subscribe(value => this.updateSumWeightList(value));
+      .subscribe(value => {
+        this.updateSumWeightList(value);
+        console.log(`SumWeightComponent/weighChangeSubscription: Value changed to ${value}`);
+      });
+      this.sumWeight = this.scaleService.getCurrentSum();
+      console.log(`SumWeightComponent/ngOnInit: initializing with value '${this.sumWeight}'`);
   }
 
   ngOnDestroy(): void {
@@ -23,11 +28,9 @@ export class SumWeightComponent implements OnInit {
   }
 
   private updateSumWeightList(weigh: number) {
-    this.sumWeightList.push(weigh);
-    this.sumWeight = this.calculateCurrentSum();
+    this.sumWeight = this.scaleService.getCurrentSum();
+    console.log(`SumWeightComponent/updateSumWeightList: value changed and current value is '${this.sumWeight}'`);
   }
-  private calculateCurrentSum(): number {
-    return this.calculateService.calculateSum(this.sumWeightList);
-  }
+
 
 }

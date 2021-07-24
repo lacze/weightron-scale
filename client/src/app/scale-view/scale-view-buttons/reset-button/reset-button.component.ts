@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ScaleService } from 'src/app/scale.service';
 
 @Component({
   selector: 'app-reset-button',
@@ -7,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResetButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(private scaleService: ScaleService) { }
 
   ngOnInit(): void {
   }
 
   public resetWeigh(): void {
-    console.log("Reset weigh called");
+    console.log(`ResetButtonComponent/resetWeigh: Resetting current weigh.`);
+    this.scaleService.resetCurrentSum();
   }
 }
