@@ -3,9 +3,8 @@
     {{title}}
   </h1>
   <nav>
-    <button routerLink="/scale-view" class="navigation-element">Scaling</button>
-    <span> | </span>
-    <button routerLink="/scale-history" class="navigation-element">Scaling history</button>
+    <button routerLink="/scale-view" routerLinkActive="active-route" class="navigation-element">Scaling</button>
+    <button routerLink="/scale-history" routerLinkActive="active-route" class="navigation-element">Scaling history</button>
   </nav>
   <router-outlet></router-outlet>
 </div>
