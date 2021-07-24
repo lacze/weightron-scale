@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Result } from 'src/app/result';
+import { ScaleService } from 'src/app/scale.service';
 
 @Component({
   selector: 'app-weigh-button',
@@ -7,12 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeighButtonComponent implements OnInit {
 
-  constructor() { }
+  @Output() weighToggled = new EventEmitter<number>();
+  
+  constructor(private scaleService: ScaleService) { }
 
   ngOnInit(): void {
   }
 
   public calculateWeigh(): void {
-    console.log("Calculate weigh called");
+    const randomWeight = Math.floor(Math.random() * 100) + 1;
+    const currentTime = new Date().toLocaleString();
+    const result: Result = {timestamp: currentTime, weigh: randomWeight}
+    console.log("Calculate weigh called", result);
+    this.scaleService.addToListOfSums(result);
+    this.scaleService.setLastWeigh(result.weigh);
   }
 }

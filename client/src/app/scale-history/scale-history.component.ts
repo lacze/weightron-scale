@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Result } from '../result';
+import { ScaleService } from '../scale.service';
 
 @Component({
   selector: 'app-scale-history',
@@ -6,19 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scale-history.component.scss']
 })
 export class ScaleHistoryComponent implements OnInit {
-  private placeholderHistoryListData = [
-    { timestamp: '2021-07-24 (placeholder)', weigh: 10 },
-    { timestamp: '2021-07-24 (placeholder)', weigh: 20 },
-    { timestamp: '2021-07-24 (placeholder)', weigh: 30 }]
-  
-    // TODO: create model for type
-    public historyList: any[] = [];
+  public historyList: Result[] = [];
 
-  constructor() { }
+  constructor(private scaleService: ScaleService) {
+  }
 
   ngOnInit(): void {
-    // TODO: Remove when removing placeholder data
-    this.historyList = this.placeholderHistoryListData;
+    this.historyList = this.scaleService.getHistoryList();
   }
 
 }
