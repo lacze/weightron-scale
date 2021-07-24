@@ -1,0 +1,13 @@
+@import 'style-variables';
+
+.navigation-element {
+    font-size: 2em;
+    display: flex-inline;
+    width: 50%;
+    text-align: center;
+    background-color: $inactive-route-color;
+}
+
+.active-route {
+    background-color: $active-route-color;
+}
