@@ -5,12 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScaleViewComponent } from './scale-view/scale-view.component';
 import { ScaleHistoryComponent } from './scale-history/scale-history.component';
+import { WeighButtonComponent } from './scale-view/weigh-button/weigh-button.component';
+import { ResetButtonComponent } from './scale-view/reset-button/reset-button.component';
+import { CurrentWeightComponent } from './scale-view/current-weight/current-weight.component';
+import { SumWeightComponent } from './scale-view/sum-weight/sum-weight.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ScaleViewComponent,
-    ScaleHistoryComponent
+    ScaleHistoryComponent,
+    WeighButtonComponent,
+    ResetButtonComponent,
+    CurrentWeightComponent,
+    SumWeightComponent
   ],
   imports: [
     BrowserModule,
